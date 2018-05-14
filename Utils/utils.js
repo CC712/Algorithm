@@ -32,6 +32,14 @@ class utils {
         }
         return res;
     }
+    //test function
+    runTest(fn, ...args){
+        let c = 0;
+        while(c < args.length){
+            console.log(`test-${c}:  ${fn(args[c])}`);
+            c++;
+        }
+    }
 }
 const u = new utils();
 module.exports = u;
