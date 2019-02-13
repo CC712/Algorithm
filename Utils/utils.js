@@ -33,12 +33,23 @@ class utils {
         return res;
     }
     //test function
-    runTest(fn, ...args){
+    runTest(fn, args, ans) {
         let c = 0;
-        while(c < args.length){
-            console.log(`test-${c}:  ${fn(args[c])}`);
+        while (c < args.length) {
+            if (ans) {
+                let _ans = ans(args[c]);
+                console.time(c);
+                let _fn = fn(args[c]);
+                console.log(`test-${c}:    ${_ans == _fn }    now :${_fn } expect:  ${_ans}`);
+                console.timeEnd(c);
+            } else {
+                console.time(c);
+                console.log(`test-${c}:   now:  ${fn(args[c])}`);
+                console.timeEnd(c);
+            }
             c++;
         }
+        console.log(`${fn.name} test end \n`);
     }
 }
 const u = new utils();
